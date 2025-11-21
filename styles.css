@@ -40,6 +40,34 @@ img {
     max-width: 100%;
 }
 
+input.invalid, textarea.invalid {
+    border: 2px solid red;
+}
+
+input.valid, textarea.valid {
+    border: 2px solid green;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+    display: none;
+}
+
+.qi-form{
+   display:flex;
+   flex-direction: column;
+   width: 100%;
+   max-width: 80vw;
+}
+
+.qi-form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .hidden {
     display: none;
 }
@@ -110,6 +138,10 @@ img {
 
 
 .qi-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
     text-align: center;
 }
 
@@ -128,12 +160,21 @@ img {
 }
 
 .qi-main {
-    height: 80vh;
+    min-height: 80vh;
 }
 
+.qi-description {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-
+    article p {
+        margin: 20px;
+    }
 }
+
 
 @media screen and (min-width: 1024px) {
     .qi-hero {
@@ -142,6 +183,7 @@ img {
 
     .qi-description {
         width: 50vw;
+        flex-direction: column;
     }
 
     .qi-menu-list-mobile {
