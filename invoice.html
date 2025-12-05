@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Quote and Invoice Builder - Quote</title>
+        <title>Quote and Invoice Builder - Invoice</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Create a professional quote quickly and easily with the Quote and Invoice Builder App.">
+        <meta name="description" content="Create a professional invoice quickly and easily with the Quote and Invoice Builder App.">
         <link rel="stylesheet" href="styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,8 @@
                     <ul class="qi-menu-list-mobile">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Quote</a></li>
-                        <li><a href="invoice.html">Invoice</a></li>
+                        <li><a href="quote.html">Quote</a></li>
+                        <li><a href="#">Invoice</a></li>
                         <li>Mobile</li>
                     </ul>
                 </section>
@@ -37,18 +37,18 @@
                 <ul class="qi-menu-list-desktop">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Quote</a></li>
+                    <li><a href="quote.html">Quote</a></li>
                     <li><a href="#">Invoice</a></li>
                 </ul>
             </section>
         </nav>
         <main class="qi-main">
              <header class="qi-title">
-                <h1>Create a professional quote</h1>
+                <h1>Create a professional invoice</h1>
             </header>
             <section class="qi-description">
                 <article>
-                    <p>This form allows you to create a professional quote quickly and easily. Fill in the details below to get started.</p>
+                    <p>This form allows you to create a professional invoice quickly and easily. Fill in the details below to get started.</p>
                 </article>
             </section>
             <section class="qi-form-section">
@@ -76,32 +76,22 @@
                         <input type="email" id="client-email" name="client-email" required>
                     </fieldset>
                     <fieldset class="qi-form">
-                        <legend>Quote Details</legend>
-                        <label for="quote-date">Quote Date</label>
-                        <input type="date" id="quote-date" name="quote-date" required>
-                        <label for="quote-expiration">Expiration Date</label>
-                        <input type="date" id="quote-expiration" name="quote-expiration" required>
-                        <label for="quote-number">Quote Number</label>
-                        <input type="text" id="quote-number" name="quote-number" required>
-                        <label for="quote-items">Items/Services</label>
-                        <textarea id="quote-items" name="quote-items" rows="5" required></textarea>
-                        <label for="quote-total">Total Amount</label>
-                        <input type="number" id="quote-total" name="quote-total" required>
+                        <legend>Invoice Details</legend>
+                        <label for="invoice-date">Invoice Date</label>
+                        <input type="date" id="invoice-date" name="invoice-date" required>
+                        <label for="invoice-expiration">Expiration Date</label>
+                        <input type="date" id="invoice-expiration" name="invoice-expiration" required>
+                        <label for="invoice-number">Invoice Number</label>
+                        <input type="text" id="invoice-number" name="invoice-number" required>
+                        <label for="invoice-items">Items/Services</label>
+                        <textarea id="invoice-items" name="invoice-items" rows="5" required></textarea>
+                        <label for="invoice-total">Total Amount</label>
+                        <input type="number" id="invoice-total" name="invoice-total" required>
                         <label for="additional-notes">Additional Notes</label>
                         <textarea id="additional-notes" name="additional-notes" rows="3"></textarea>
                     </fieldset>
-                        <input type="submit" value="Generate Quote" class="btn">
+                        <input type="submit" value="Generate Invoice" class="btn">
                 </form>
-            </section>
-            <section class="qi-cta">
-                        <a href="index.html" class="btn">Back to Homepage</a>
-                        <a href="invoice.html" class="btn">Create an Invoice</a>
-            </section>
-        </main>
-          <footer class="qi-footer">
-            <section>
-                <p>Quote and Invoice Builder App &copy; 2025</p>
-            </section>
-        </footer>
     </body>
+
 </html>
