@@ -61,17 +61,74 @@ clientNameInput.addEventListener('blur', () => {
 
 const quoteForm = document.getElementById("quote-form");
 
+test = {
+    name: "Test Business",
+    email: "   test",
+    address: "123 Test St",
+    phone: "555-1234"
+}
+
+// Object.keys(test) = ["business-name", "business-email"]
+// test["business-name"] = "Test Business", test["business-email"] = "   test"
+
+
+// {"business-name": "Test Business", "business-email": "   test"}
+
+
+function getSectionData(prefix, data) {
+    return Object.keys(data).filter(key => key.startsWith(prefix)).reduce((obj, key) => {
+        obj[key] = data[key];
+        return obj;
+    }, {});
+}     
+
+
+function generatePDF(quoteDoc, businessInfo, clientInfo, quoteInfo) {
+    console.log("Generating PDF...");
+    quoteDoc.text(businessInfo["business-name"], 100, 10, { align: "center" });
+    quoteDoc.text(businessInfo["business-address"], 100, 20, { align: "center" });
+    quoteDoc.text(businessInfo["business-email"], 100, 30, { align: "center" });
+    quoteDoc.text(businessInfo["business-phone"], 100, 40, { align: "center" });
+
+    quoteDoc.line(10, 50, 200, 50);
+
+    quoteDoc.text(`Client: ${clientInfo["client-name"]}`, 10, 60);
+    quoteDoc.text(`Email: ${clientInfo["client-email"]}`, 10, 70);
+    quoteDoc.text(`Address: ${clientInfo["client-address"]}`, 10, 80);
+    quoteDoc.text(`Phone: ${clientInfo["client-phone"]}`, 10, 90);
+
+    quoteDoc.line(10, 100, 200, 100);
+
+    quoteDoc.text(`Quote Details:`, 10, 110);
+
+
+    for (let [key, value] of Object.entries(quoteInfo)) {
+        quoteDoc.text(`${key} — ${value}`, 10, 120 + (10 * Object.keys(quoteInfo).indexOf(key)));
+    }
+
+    quoteDoc.save("quote.pdf");
+
+}
+
+// if else statement
+
 quoteForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const quoteData = new FormData(quoteForm);
-    const quoteDateJson = Object.fromEntries(quoteData.entries());
+    const quoteDataJson = Object.fromEntries(quoteData.entries());
+
+    const businessInfo = getSectionData("business-", quoteDataJson);
+
+    const clientInfo = getSectionData("client-", quoteDataJson);
+
+    let pageInfo = document.location.pathname === "/invoice.html" ? "invoice-" : "quote-";
+
+    const quoteInfo = getSectionData(pageInfo, quoteDataJson);
 
     const quoteDoc = new jsPDF();
 
-    for (let [key, value] of Object.entries(quoteDateJson)) {
-        quoteDoc.text(`${key} — ${value}`, 10, 10 + (10 * Object.keys(quoteDateJson).indexOf(key)));
-    }
+    generatePDF(quoteDoc, businessInfo, clientInfo, quoteInfo);
 
-    quoteDoc.save("quote.pdf");
+  
 });
